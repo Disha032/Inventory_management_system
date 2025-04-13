@@ -70,10 +70,12 @@ public class Main {
 
                 case 3:
                     manager.saveProductsToFile();
+                    System.out.println("Products saved successfully!");
                     break;
 
                 case 4:
                     manager.retrieveProductsFromFile();
+                    System.out.println("Products loaded successfully!");
                     break;
 
                 case 5:
@@ -86,7 +88,7 @@ public class Main {
                     break;
 
                 case 6:
-                    manager.simulateConcurrentOrders();
+                    manager.simulateConcurrentOrders(scanner);
                     break;
 
                 case 7:

@@ -104,12 +104,18 @@ public class InventoryManager {
     public void saveProductsToFile() {
         try (FileWriter writer = new FileWriter("products.csv")) {
             for (Product product : products.values()) {
-                writer.write(product.getId() + "," + product.getName() + "," + product.getPrice() + "," + product.getQuantity() + "\n");
+                if (product instanceof Electronics) {
+                    Electronics e = (Electronics) product;
+                    writer.write("Electronics," + e.getId() + "," + e.getName() + "," + e.getPrice() + "," + e.getQuantity() + "," + e.getBrand() + "\n");
+                } else if (product instanceof Groceries) {
+                    Groceries g = (Groceries) product;
+                    writer.write("Groceries," + g.getId() + "," + g.getName() + "," + g.getPrice() + "," + g.getQuantity() + "," + g.getExpirationDate() + "\n");
+                }
             }
         } catch (IOException e) {
             System.out.println("Error saving products to file: " + e.getMessage());
         }
-    }
+    }    
     
     // Method to retrieve product data from file
     public void retrieveProductsFromFile() {
@@ -117,23 +123,52 @@ public class InventoryManager {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                Product product = new Product(parts[0], parts[1], Double.parseDouble(parts[2]), Integer.parseInt(parts[3]));
-                products.put(product.getId(), product);
+                String type = parts[0];
+                if (type.equals("Electronics")) {
+                    Product e = new Electronics(parts[1], parts[2], Double.parseDouble(parts[3]), Integer.parseInt(parts[4]), parts[5]);
+                    products.put(e.getId(), e);
+                } else if (type.equals("Groceries")) {
+                    Product g = new Groceries(parts[1], parts[2], Double.parseDouble(parts[3]), Integer.parseInt(parts[4]), parts[5]);
+                    products.put(g.getId(), g);
+                }
             }
         } catch (IOException e) {
             System.out.println("Error retrieving products from file: " + e.getMessage());
         }
     }    
 
-    // Method to simulate multiple orders being processed concurrently
-    public void simulateConcurrentOrders() {
+    public void simulateConcurrentOrders(Scanner scanner) {
+        System.out.print("Enter product ID to order: ");
+        String productId = scanner.nextLine();
+    
+        System.out.print("Enter quantity to order per customer: ");
+        int quantity = Integer.parseInt(scanner.nextLine());
+    
+        System.out.print("Enter number of customers placing orders: ");
+        int numberOfOrders = Integer.parseInt(scanner.nextLine());
+    
         ExecutorService executor = Executors.newFixedThreadPool(5);
-        for (int i = 0; i < 10; i++) {
-            Order order = new Order("P001", 2);
-            executor.submit(() -> processOrder(order));
+    
+        for (int i = 0; i < numberOfOrders; i++) {
+            executor.submit(() -> {
+                synchronized (this) {
+                    Product product = products.get(productId);
+                    if (product != null) {
+                        if (product.getQuantity() >= quantity) {
+                            product.setQuantity(product.getQuantity() - quantity);
+                            System.out.println("Order successful! Remaining stock: " + product.getQuantity());
+                        } else {
+                            System.out.println("Order failed! Not enough stock. Remaining stock: " + product.getQuantity());
+                        }
+                    } else {
+                        System.out.println("Product not found.");
+                    }
+                }
+            });
         }
+    
         executor.shutdown();
-    }
+    }    
 
     // Method to check for stock shortages
     public void checkStock() throws StockShortageException {
