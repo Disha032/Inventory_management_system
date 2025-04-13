@@ -2,9 +2,8 @@ package in.ac.adit.pwj.miniproject.inventory;
 
 import java.io.*;
 import java.util.*;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 // Inventory Manager class
 public class InventoryManager {
@@ -149,6 +148,9 @@ public class InventoryManager {
         System.out.print("Enter number of customers placing orders: ");
         int numberOfOrders = Integer.parseInt(scanner.nextLine());
     
+        System.out.print("Enter maximum number of successful orders allowed: ");
+        int maxSuccessfulOrders = Integer.parseInt(scanner.nextLine());
+    
         Product product = products.get(productId);
         if (product == null) {
             System.out.println("Product not found.");
@@ -156,12 +158,25 @@ public class InventoryManager {
         }
     
         ExecutorService executor = Executors.newFixedThreadPool(5);
+        AtomicInteger successfulOrders = new AtomicInteger(0);
     
         for (int i = 0; i < numberOfOrders; i++) {
             executor.submit(() -> {
+                try {
+                    Thread.sleep(200); // delay to visualize concurrency
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+    
                 synchronized (this) {
+                    if (successfulOrders.get() >= maxSuccessfulOrders) {
+                        System.out.println("Order rejected! Max successful orders limit reached.");
+                        return;
+                    }
+    
                     if (product.getQuantity() >= quantity) {
                         product.setQuantity(product.getQuantity() - quantity);
+                        successfulOrders.incrementAndGet();
                         System.out.println("Order successful! Remaining stock: " + product.getQuantity());
                     } else {
                         System.out.println("Order failed! Not enough stock. Remaining stock: " + product.getQuantity());
@@ -177,7 +192,7 @@ public class InventoryManager {
             System.out.println("Order processing was interrupted.");
         }
     
-        System.out.println("All orders processed.");
+        System.out.println("All orders processed. Successful orders: " + successfulOrders.get());
     }    
 
     // Method to check for stock shortages
@@ -201,8 +216,7 @@ public class InventoryManager {
     public Collection<Product> getAllProducts() {
         return products.values();
     }
-    
-   
+       
 }
 
 
