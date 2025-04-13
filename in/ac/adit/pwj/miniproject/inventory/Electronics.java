@@ -12,5 +12,11 @@ public class Electronics extends Product {
     public String getBrand() {
         return brand;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", Brand: " + brand + " (Electronics)";
+    }
+
 }
 
