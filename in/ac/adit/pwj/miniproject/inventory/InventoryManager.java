@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 // Inventory Manager class
 public class InventoryManager {
@@ -102,7 +103,7 @@ public class InventoryManager {
 
     // Method to save product data to file
     public void saveProductsToFile() {
-        try (FileWriter writer = new FileWriter("products.csv")) {
+        try (FileWriter writer = new FileWriter("C:\\Users\\ADMIN\\Miniproject\\in\\ac\\adit\\pwj\\miniproject\\inventory\\products.csv")) {
             for (Product product : products.values()) {
                 if (product instanceof Electronics) {
                     Electronics e = (Electronics) product;
@@ -119,7 +120,7 @@ public class InventoryManager {
     
     // Method to retrieve product data from file
     public void retrieveProductsFromFile() {
-        try (BufferedReader reader = new BufferedReader(new FileReader("products.csv"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\ADMIN\\Miniproject\\in\\ac\\adit\\pwj\\miniproject\\inventory\\products.csv"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
@@ -137,6 +138,7 @@ public class InventoryManager {
         }
     }    
 
+    // Method to simulate multiple orders being processed concurrently
     public void simulateConcurrentOrders(Scanner scanner) {
         System.out.print("Enter product ID to order: ");
         String productId = scanner.nextLine();
@@ -147,27 +149,35 @@ public class InventoryManager {
         System.out.print("Enter number of customers placing orders: ");
         int numberOfOrders = Integer.parseInt(scanner.nextLine());
     
+        Product product = products.get(productId);
+        if (product == null) {
+            System.out.println("Product not found.");
+            return;
+        }
+    
         ExecutorService executor = Executors.newFixedThreadPool(5);
     
         for (int i = 0; i < numberOfOrders; i++) {
             executor.submit(() -> {
                 synchronized (this) {
-                    Product product = products.get(productId);
-                    if (product != null) {
-                        if (product.getQuantity() >= quantity) {
-                            product.setQuantity(product.getQuantity() - quantity);
-                            System.out.println("Order successful! Remaining stock: " + product.getQuantity());
-                        } else {
-                            System.out.println("Order failed! Not enough stock. Remaining stock: " + product.getQuantity());
-                        }
+                    if (product.getQuantity() >= quantity) {
+                        product.setQuantity(product.getQuantity() - quantity);
+                        System.out.println("Order successful! Remaining stock: " + product.getQuantity());
                     } else {
-                        System.out.println("Product not found.");
+                        System.out.println("Order failed! Not enough stock. Remaining stock: " + product.getQuantity());
                     }
                 }
             });
         }
     
         executor.shutdown();
+        try {
+            executor.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+        } catch (InterruptedException e) {
+            System.out.println("Order processing was interrupted.");
+        }
+    
+        System.out.println("All orders processed.");
     }    
 
     // Method to check for stock shortages
