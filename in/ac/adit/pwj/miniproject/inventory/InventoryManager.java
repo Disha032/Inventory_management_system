@@ -45,17 +45,52 @@ public class InventoryManager {
         }
     }
 
+    // Method to delete a product by ID
+    public void deleteProduct(String productId) {
+        if (products.containsKey(productId)) {
+            products.remove(productId);
+            productIds.remove(productId);
+            System.out.println("Product deleted successfully!");
+        } else {
+            System.out.println("Product not found.");
+        }
+    }
+
+    // Method to display all products
+    public void displayAllProducts() {
+        if (products.isEmpty()) {
+            System.out.println("No products in the inventory.");
+            return;
+        }
+
+        System.out.println("All Products:");
+        for (Product product : products.values()) {
+            System.out.println(product);
+        }
+    }
+
     // Method to process order
     public void processOrder(Order order) {
         try {
             Product product = products.get(order.getProductId());
             if (product != null) {
-                if (product.getQuantity() >= order.getQuantity()) {
-                    product.setQuantity(product.getQuantity() - order.getQuantity());
+                int currentQty = product.getQuantity();
+                int orderQty = order.getQuantity();
+    
+                if (currentQty >= orderQty) {
+                    int newQty = currentQty - orderQty;
+                    product.setQuantity(newQty);
                     System.out.println("Order processed successfully!");
+    
+                    // Reuse the exception to warn about low stock
+                    if (newQty < 5) {
+                        throw new StockShortageException("Warning: Stock for " + product.getName() + " is running low! (Only " + newQty + " left)");
+                    }
+    
                 } else {
                     throw new StockShortageException("Insufficient stock for the product!");
                 }
+    
             } else {
                 throw new InvalidInputException("Product not found in the inventory!");
             }
@@ -63,6 +98,7 @@ public class InventoryManager {
             System.out.println(e.getMessage());
         }
     }
+    
 
     // Method to save product data to file
     public void saveProductsToFile() {
@@ -99,6 +135,28 @@ public class InventoryManager {
         executor.shutdown();
     }
 
+    // Method to check for stock shortages
+    public void checkStock() throws StockShortageException {
+        boolean shortageFound = false;
+
+        for (Product product : products.values()) {
+            if (product.getQuantity() < 5) {
+                shortageFound = true;
+                throw new StockShortageException(
+                    "Low stock for product: " + product.getName() + " (Quantity: " + product.getQuantity() + ")"
+                );
+            }
+        }
+
+        if (!shortageFound) {
+            System.out.println("All products have sufficient stock.");
+        }
+    }
+
+    public Collection<Product> getAllProducts() {
+        return products.values();
+    }
+    
    
 }
 
