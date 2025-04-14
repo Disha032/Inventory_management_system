@@ -88,6 +88,10 @@ It then displays whether the order was successful or failed due to stock shortag
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+##  User Manual
+
+The following screenshots and descriptions demonstrate how to use each feature of the Inventory Management System, including adding, deleting, saving, retrieving, and simulating orders. This section serves as the user manual.
+
 ##  Screenshots 
 
 > ![Retrieve Products from file for previously stored data](https://github.com/user-attachments/assets/47a750c0-800f-4653-94a5-ebd8022cf4de)
