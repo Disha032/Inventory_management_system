@@ -5,21 +5,25 @@ handle stock, and simulate real-world inventory operations like concurrent order
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Project Structure
-Miniproject/ 
-└── in/ 
-└── ac/ 
-└── adit/
-└── pwj/ 
-└── miniproject/ 
-└── inventory/
-├── Electronics.java
-├── Groceries.java
-├── InvalidInputException.java 
-├── InventoryManager.java
-├── Main.java 
-├── Product.java 
-├── StockShortageException.java  
-└── products.csv
+Miniproject/
+│
+├── .gitignore
+└── in/
+    └── ac/
+        └── adit/
+            └── pwj/
+                └── miniproject/
+                    └── inventory/
+                        ├── Screenshots/   
+                        ├── Electronics.java
+                        ├── Groceries.java
+                        ├── InvalidInputException.java 
+                        ├── InventoryManager.java
+                        ├── Main.java 
+                        ├── Product.java 
+                        ├── StockShortageException.java  
+                        ├── products.csv 
+                        └── README.md
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
