@@ -140,6 +140,12 @@ The following screenshots and descriptions demonstrate how to use each feature o
 
 >  Option 9, "Exit," was chosen by the user, resulting in the termination of the Inventory Management System. The "Exiting..." message confirms the action, and the command    prompt displays the current directory of the application.
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+##  License
+
+This project is licensed under the [MIT License](LICENSE).  
+You are free to use, modify, and distribute this software with proper attribution.
+
 
 
 
