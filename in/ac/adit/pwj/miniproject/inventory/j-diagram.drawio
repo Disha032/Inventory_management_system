@@ -1,0 +1,84 @@
+<mxfile host="65bd71144e">
+    <diagram id="KI_uXKQJAbYduthx_FNy" name="Page-1">
+        <mxGraphModel dx="1397" dy="1677" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="1">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="6" value="&lt;table style=&quot;width:100%;height:100%;border-collapse:collapse;&quot; cellpadding=&quot;4&quot; height=&quot;100%&quot; width=&quot;100%&quot; border=&quot;1&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;th&gt;Product&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;-id: String&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;-name: String&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;-price: double&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;-quantity: int&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;+getId(): String&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;+getName(): String&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;+getPrice(): double&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;+getQuantity(): int&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;+setQuantity(quantity: int): void&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent;&quot;&gt;+toString(): String&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="text;html=1;whiteSpace=wrap;overflow=fill;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=2;fontFamily=Helvetica;horizontal=1;align=center;verticalAlign=middle;labelPosition=center;verticalLabelPosition=middle;textDirection=ltr;labelBackgroundColor=none;labelBorderColor=none;spacingTop=0;spacing=2;spacingLeft=0;" vertex="1" parent="1">
+                    <mxGeometry x="340" y="30" width="180" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="&lt;table border=&quot;1&quot; width=&quot;100%&quot; height=&quot;100%&quot; cellpadding=&quot;4&quot; style=&quot;width:100%;height:100%;border-collapse:collapse;&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;th&gt;StockShortageException&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;+StockShortageException(message: String)&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=#d6b656;fillColor=#fff2cc;overflow=fill;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="490" y="-635" width="250" height="230" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="&lt;table border=&quot;1&quot; width=&quot;100%&quot; height=&quot;100%&quot; cellpadding=&quot;4&quot; style=&quot;width:100%;height:100%;border-collapse:collapse;&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;th align=&quot;center&quot;&gt;Electronics&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;-brand: String&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;+getBrand(): String&lt;br&gt;+toString(): String&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=#d6b656;fillColor=#fff2cc;overflow=fill;" vertex="1" parent="1">
+                    <mxGeometry x="20" width="180" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="&lt;table border=&quot;1&quot; width=&quot;100%&quot; height=&quot;100%&quot; cellpadding=&quot;4&quot; style=&quot;width:100%;height:100%;border-collapse:collapse;&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;th align=&quot;center&quot;&gt;Main&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;+main(args: String[]): void&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=#d6b656;fillColor=#fff2cc;overflow=fill;" vertex="1" parent="1">
+                    <mxGeometry x="640" y="-300" width="180" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="&lt;table border=&quot;1&quot; width=&quot;100%&quot; height=&quot;100%&quot; cellpadding=&quot;4&quot; style=&quot;width:100%;height:100%;border-collapse:collapse;&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;th align=&quot;center&quot;&gt;InventoryManager&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;-products: map&amp;lt;String, Product&amp;gt;A&lt;br&gt;-productIds: Set&amp;lt;String&amp;gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;+addProduct(product: Product): void&lt;br&gt;+deleteProduct(productId: String): void&lt;br&gt;+displayAllProducts(): void&lt;br&gt;+processOrder(order: Order): void&lt;br&gt;+saveProductsToFile(): void&lt;br&gt;+reteieveProductsFromFile(): void&lt;br&gt;+simulateConcurrentOrders(scanner:Scanner): void&lt;br&gt;+checkStock(): void&lt;br&gt;+getAllProducts(): Collection&amp;lt;Product&amp;gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=#d6b656;fillColor=#fff2cc;overflow=fill;" vertex="1" parent="1">
+                    <mxGeometry x="280" y="-340" width="290" height="280" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="&lt;table style=&quot;width:100%;height:100%;border-collapse:collapse;&quot; cellpadding=&quot;4&quot; height=&quot;100%&quot; width=&quot;100%&quot; border=&quot;1&quot; align=&quot;center&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;th align=&quot;center&quot;&gt;Groceries&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;-expirationDate: String&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;+getExperirationdate(): String&lt;br&gt;+toString(): String&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=#d6b656;fillColor=#fff2cc;overflow=fill;" vertex="1" parent="1">
+                    <mxGeometry x="600" y="30" width="180" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="&lt;table border=&quot;1&quot; width=&quot;100%&quot; height=&quot;100%&quot; cellpadding=&quot;4&quot; style=&quot;width:100%;height:100%;border-collapse:collapse;&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;th align=&quot;center&quot;&gt;InvalidInputException&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;+invalidInputException(message: String)&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=#d6b656;fillColor=#fff2cc;overflow=fill;" vertex="1" parent="1">
+                    <mxGeometry x="140" y="-650" width="235" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="&lt;table border=&quot;1&quot; width=&quot;100%&quot; height=&quot;100%&quot; cellpadding=&quot;4&quot; style=&quot;width:100%;height:100%;border-collapse:collapse;&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;th align=&quot;center&quot;&gt;Order&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;-productId: String&lt;br&gt;-quantity: int&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;+getProductId(): String&lt;br&gt;+getQuantity(): int&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=#d6b656;fillColor=#fff2cc;overflow=fill;" vertex="1" parent="1">
+                    <mxGeometry x="20" y="-280" width="180" height="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;strokeColor=light-dark(#ffffff, #ededed);fontColor=light-dark(#ffffff, #ededed);labelBackgroundColor=none;" edge="1" parent="1">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="200" y="88.75" as="sourcePoint"/>
+                        <mxPoint x="340" y="89" as="targetPoint"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="18" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;exitX=0.002;exitY=0.345;exitDx=0;exitDy=0;exitPerimeter=0;strokeColor=light-dark(#fcfcfc, #ededed);fontColor=light-dark(#fafafa, #ededed);labelBackgroundColor=none;" edge="1" parent="1" source="11">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="606.23" y="88.05000000000001" as="sourcePoint"/>
+                        <mxPoint x="520" y="92" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="22" value="" style="endArrow=circlePlus;startArrow=none;endFill=0;startFill=0;endSize=8;html=1;labelBackgroundColor=none;strokeColor=light-dark(#ffffff, #ededed);" edge="1" parent="1">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="200" y="-185.91" as="sourcePoint"/>
+                        <mxPoint x="280" y="-186" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="23" value="1" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=bottom;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontColor=light-dark(#fffafa, #ededed);strokeColor=#FFFFFF;" edge="1" parent="1" source="10" target="6">
+                    <mxGeometry x="-1" y="3" relative="1" as="geometry">
+                        <mxPoint x="380" y="-160" as="sourcePoint"/>
+                        <mxPoint x="540" y="-160" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="425" y="-15"/>
+                            <mxPoint x="430" y="-15"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="24" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;entryX=1.014;entryY=0.412;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.012;exitY=0.411;exitDx=0;exitDy=0;exitPerimeter=0;strokeColor=#FFFFFF;fontColor=light-dark(#fafafa, #ededed);labelBackgroundColor=none;" edge="1" parent="1" source="9" target="10">
+                    <mxGeometry x="-0.061" y="1" width="160" relative="1" as="geometry">
+                        <mxPoint x="630" y="-225" as="sourcePoint"/>
+                        <mxPoint x="850" y="-300" as="targetPoint"/>
+                        <Array as="points"/>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="25" value="" style="endArrow=open;endFill=1;endSize=12;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.655;entryY=0.005;entryDx=0;entryDy=0;entryPerimeter=0;strokeColor=#FFFFFF;" edge="1" parent="1" source="7" target="10">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="690" y="-300" as="sourcePoint"/>
+                        <mxPoint x="850" y="-300" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="26" value="" style="endArrow=open;endFill=1;endSize=12;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#FFFFFF;" edge="1" parent="1" source="12" target="10">
+                    <mxGeometry width="160" relative="1" as="geometry">
+                        <mxPoint x="690" y="-300" as="sourcePoint"/>
+                        <mxPoint x="850" y="-300" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
